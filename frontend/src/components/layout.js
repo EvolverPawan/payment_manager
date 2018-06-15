@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 
 // UI Imports
 import AppBar from 'material-ui/AppBar';
-import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 
 // App Imports
@@ -17,25 +16,17 @@ import UserLogin from './user/login'
 class Layout extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            drawerOpen: false
-        };
+
     }
 
-    handleDrawerToggle = () => this.setState({ drawerOpen: !this.state.drawerOpen });
 
     render() {
         const { isAuthenticated } = this.props.user;
-        // {isAuthenticated ? (
-        //   this.props.children
-        // ) : (
-        //   <UserLogin />
-        // )}
+
         return (
             <div>
                 <AppBar
                     title="Payment Manager"
-                    onLeftIconButtonTouchTap={ this.handleDrawerToggle }
                     iconElementRight={ isAuthenticated ? <UserButtonLogged /> : <UserButtonLogin /> }
                 />
 
