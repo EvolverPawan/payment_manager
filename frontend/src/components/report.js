@@ -92,7 +92,7 @@ class Report extends Component {
             if(response.success) {
                 this.setState({ transactionsFound: true, transactions:response.data});
             } else {
-                this.setState({ isLoading: false, error: response.errors[0].message });
+                this.setState({ transactionsFound: false });
             }
           });
       } else {

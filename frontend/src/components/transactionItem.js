@@ -17,12 +17,10 @@ function TransactionList({ transactions }) {
     const transactionsList = (
         transactions.map(({ _id, customerName, amount,description,transactionType,createdAt }) => (
             <Card key={ _id }>
-                <Link to={ `/tweet/${ _id }` }>
                   <CardTitle title={ customerName } subtitle={ moment(new Date(createdAt)).fromNow() } />
                   <TextField value={amount}  />
                   <TextField errorStyle={styles.errorStyle} value={description}  />
                   <TextField  value={transactionType}  />
-                </Link>
             </Card>
 
         ))

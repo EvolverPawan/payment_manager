@@ -11,12 +11,20 @@ let authMiddleware = function (request, response, next) {
   // console.log('request', request);
   // console.log('authmiddle', request.body.token,'===' ,request.query.token, '===',request.headers['x-access-token'], '===',request.cookies.token);
     let token = request.body.token || request.query.token || request.headers['x-access-token'] || request.cookies.token;
+    console.log('token', token);
     if(token && token != 'null') {
         request.user = jwt.verify(token, config.secret);
     } else {
         request.user = {};
+        let responseData = {
+            success: false,
+            data: {},
+            errors: []
+        };
+        response.json(responseData);
+        return ;
     }
-    // console.log('test',request.user);
+    console.log(request.user);
     next();
 };
 

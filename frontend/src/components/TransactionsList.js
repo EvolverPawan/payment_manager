@@ -34,14 +34,6 @@ class TransactionsList extends Component{
           { this.props.test.length === 0 ? emptyMessage : cardsArray }
       </div>
     );
-     // return (
-     //   <div>
-     //            <h5>Payments List:</h5>
-     //            <ul>
-     //                {payments}
-     //            </ul>
-     //        </div>
-     // );
    }
 
 }

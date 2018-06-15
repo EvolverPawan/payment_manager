@@ -6,7 +6,7 @@ let config = {
 };
 
 if(NODE_ENV === 'production') {
-    config.url.api = 'https://api.node-express-react-redux-zwitter.demo.atulmy.com/'; // Change this URL according to your live server
+    config.url.api = '/'; // Change this URL according to your live server
 } else {
     config.url.api = '/'
 }

@@ -44,7 +44,6 @@ class AddTransaction extends Component {
         });
           // this.setState({ isLoading: false, notification: true, text: '', error: '', tweetId: response.data.tweetId });
       } else {
-          // this.setState({ isLoading: false, error: response.errors[0].message });
           console.log('error', response);
       }
     });}

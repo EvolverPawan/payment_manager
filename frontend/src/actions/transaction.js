@@ -8,12 +8,19 @@ export const SET_FILTERED_TRANSACTIONS = 'SET_FILTERED_TRANSACTIONS';
 // export const FETCH_TWEET_BEGIN = 'FETCH_TWEET_BEGIN';
 
 export function fetchTransactions() {
+  const token = localStorage.getItem('token');
+console.log('token client side', token);
     return dispatch => {
         dispatch({
             type: FETCH_TRANSACTIONS_BEGIN
         });
-
-        return fetch(`${ config.url.api }transactions`).then(function(response) {
+        return fetch(`${ config.url.api }transactions`, {
+            method: 'get',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-access-token': token
+            }
+        }).then(function(response) {
             if (response.ok) {
                 response.json().then(function(response) {
                     if(response.data.length > 0) {
@@ -36,9 +43,6 @@ export function fetchFilteredTransactions(filters) {
   const token = localStorage.getItem('token');
 
     return dispatch => {
-        // dispatch({
-        //     type: FETCH_TRANSACTIONS_BEGIN
-        // });
 
         return fetch(`${ config.url.api }filters/${filters.date}/${filters.transactionType}/${filters.customerName}`,{
             method: 'get',
@@ -47,24 +51,6 @@ export function fetchFilteredTransactions(filters) {
                 'x-access-token': token
             }
         }).then(response => response.json());
-        // .then(function(response) {
-        //   console.log('response',response);
-        //     if (response.ok) {
-        //         response.json().then(function(response) {
-        //             if(response.data.length > 0) {
-        //               response.success = true;
-        //                 dispatch({
-        //                     type: SET_TRANSACTIONS,
-        //                     transactions: response.data
-        //                 });
-        //             }
-        //         });
-        //     } else {
-        //         console.log("Looks like the response wasn't perfect, got status", response.status);
-        //     }
-        // }, function(e) {
-        //     console.log("Fetch failed!", e);
-        // });
     }
 }
 

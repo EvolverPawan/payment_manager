@@ -33,7 +33,6 @@ transactionRoutes.get('/transactions', authMiddleware, (request, response) => {
     });
 });
 
-// Add Transaction  (/tweet/add)
 transactionRoutes.post('/transaction/add', authMiddleware, (request, response) => {
     let responseData = {
         success: false,
@@ -78,29 +77,6 @@ transactionRoutes.post('/transaction/add', authMiddleware, (request, response) =
         response.json(responseData);
     }
 });
-/*
-// Single Tweets (/tweet/tweetId)
-tweetRoutes.get('/tweet/:tweetId', authMiddleware, (request, response) => {
-    let responseData = {
-        success: false,
-        data: {},
-        errors: []
-    };
-
-    if(request.params.tweetId) {
-        Tweet.find({ _id: request.params.tweetId }).exec(function (error, documents) {
-            if (documents && documents.length > 0) {
-                responseData.data = documents[0];
-                responseData.success = true;
-            }
-
-            response.json(responseData);
-        });
-    } else {
-        response.json(responseData);
-    }
-});
-*/
 
 // Get Distinct Customer Names (/customers)
 transactionRoutes.get('/customers/:searchText', authMiddleware, (request, response) => {
@@ -132,7 +108,6 @@ transactionRoutes.get('/filters/:date/:transactionType/:customerName', authMiddl
         data: {},
         errors: []
     };
-    // response.json(responseData);
     let customerName = request.params.customerName;
     let transactionType = request.params.transactionType;
     let date = request.params.date;
@@ -146,10 +121,10 @@ transactionRoutes.get('/filters/:date/:transactionType/:customerName', authMiddl
     var duration = 24*60*60*1000;
     var dateTomm = Number(todaysDate.getTime()) + Number(duration);
     transactionType = (Number(transactionType)-1).toString();
-    console.log('transaction type',transactionType);
-    console.log(todaysDate.getTime(), dateTomm);
+    // console.log('transaction type',transactionType);
+    // console.log(todaysDate.getTime(), dateTomm);
     Transaction.find({ "customerName":  customerName,"createdAt":{"$gte": todaysDate.getTime(), "$lte":dateTomm}, "transactionType": transactionType },function(error, documents){
-      console.log('document',documents);
+      // console.log('document',documents);
       responseData.success = false;
       if(typeof documents !== 'undefined' && documents.length > 0) {
           responseData.data = documents;
