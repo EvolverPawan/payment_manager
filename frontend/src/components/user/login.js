@@ -13,7 +13,7 @@ import TextField from 'material-ui/TextField';
 import { Card, CardText } from 'material-ui/Card';
 
 // App Imports
-import { postLogin } from '../../actions/user';
+import { postLogin,userLogout } from '../../actions/user';
 
 class UserLogin extends Component {
     constructor(props) {
@@ -28,6 +28,7 @@ class UserLogin extends Component {
             notification: false,
             logged: false
         };
+        this.props.userLogout();
     }
 
     onSubmit(event) {
@@ -136,11 +137,12 @@ class UserLogin extends Component {
 }
 
 UserLogin.propTypes = {
-    postLogin: PropTypes.func.isRequired
+    postLogin: PropTypes.func.isRequired,
+    userLogout: PropTypes.func.isRequired
 };
 
 UserLogin.contextTypes = {
     router: PropTypes.object.isRequired
 };
 
-export default connect(null, { postLogin })(UserLogin);
+export default connect(null, { postLogin,userLogout })(UserLogin);

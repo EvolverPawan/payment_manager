@@ -12,6 +12,7 @@ import MenuItem from 'material-ui/MenuItem';
 // App Imports
 import UserButtonLogin from './user/button/login';
 import UserButtonLogged from './user/button/logged';
+import UserLogin from './user/login'
 
 class Layout extends Component {
     constructor(props) {
@@ -25,7 +26,11 @@ class Layout extends Component {
 
     render() {
         const { isAuthenticated } = this.props.user;
-
+        // {isAuthenticated ? (
+        //   this.props.children
+        // ) : (
+        //   <UserLogin />
+        // )}
         return (
             <div>
                 <AppBar
@@ -34,16 +39,8 @@ class Layout extends Component {
                     iconElementRight={ isAuthenticated ? <UserButtonLogged /> : <UserButtonLogin /> }
                 />
 
-                <Drawer
-                    docked={false}
-                    width={200}
-                    open={ this.state.drawerOpen }
-                    onRequestChange={(drawerOpen) => this.setState({ drawerOpen })}
-                >
-                    
-                </Drawer>
+                {this.props.children}
 
-                { this.props.children }
             </div>
         );
     }

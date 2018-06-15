@@ -30,6 +30,8 @@ class UserButtonLogged extends Component {
     }
 
     render() {
+      // <MenuItem
+      // primaryText="Sign out" onClick={ this.logout.bind(this) }/>
         return (
             <IconMenu
                 iconButtonElement={
@@ -40,7 +42,8 @@ class UserButtonLogged extends Component {
             >
                 <Link to="/add/transaction"><MenuItem primaryText="Add payment"/></Link>
                 <Link to="/report"><MenuItem primaryText="Reports"/></Link>
-                <MenuItem primaryText="Sign out" onClick={ this.logout.bind(this) }/>
+                <Link to="/user/login"><MenuItem primaryText="Sign Out"/></Link>
+
             </IconMenu>
         );
     }
