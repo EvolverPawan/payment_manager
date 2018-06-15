@@ -9,7 +9,7 @@ export const SET_FILTERED_TRANSACTIONS = 'SET_FILTERED_TRANSACTIONS';
 
 export function fetchTransactions() {
   const token = localStorage.getItem('token');
-console.log('token client side', token);
+  console.log('token client side', token);
     return dispatch => {
         dispatch({
             type: FETCH_TRANSACTIONS_BEGIN

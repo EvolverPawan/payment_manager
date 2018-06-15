@@ -14,7 +14,7 @@ let User = require('../models/user');
 let userRoutes = express.Router();
 
 // Login
-userRoutes.post('/user/login', authMiddleware, (request, response) => {
+userRoutes.post('/user/login', (request, response) => {
     let responseData = {
         success: false,
         data: {},

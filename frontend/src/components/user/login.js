@@ -61,7 +61,7 @@ class UserLogin extends Component {
                     this.setState({
                         isLoading: false,
                         isLoggingIn: false,
-                        error: response.errors[0].message,
+                        error: response.message,
                         notification: false
                     });
                 }
