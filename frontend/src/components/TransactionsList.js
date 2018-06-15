@@ -28,7 +28,7 @@ class TransactionsList extends Component{
 
         ))
     );
-    console.log('TransactionsList',this.props.test );
+    // console.log('TransactionsList',this.props.test );
     return (
       <div>
           { this.props.test.length === 0 ? emptyMessage : cardsArray }

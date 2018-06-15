@@ -44,9 +44,9 @@ class Report extends Component {
     if(value.length > 0){
     this.props.getDistinctCustomers(value).then((response) => {
       this.setState({ search_api_response: true});
-      console.log('search respnse', response);
+      // console.log('search respnse', response);
       if(response.success) {
-        console.log(response);
+        // console.log(response);
         this.setState({
           dataSource:response.data,
         });
@@ -66,7 +66,7 @@ class Report extends Component {
 
 
   onResetDate(){
-    console.log('onresetdate');
+    // console.log('onresetdate');
     this.setState({
       customerName:'',
       transactionType:'all',

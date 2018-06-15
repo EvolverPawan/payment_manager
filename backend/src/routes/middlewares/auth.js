@@ -11,7 +11,7 @@ let authMiddleware = function (request, response, next) {
   // console.log('request', request);
   // console.log('authmiddle', request.body.token,'===' ,request.query.token, '===',request.headers['x-access-token'], '===',request.cookies.token);
     let token = request.body.token || request.query.token || request.headers['x-access-token'] || request.cookies.token;
-    console.log('token', token);
+    // console.log('token', token);
     if(token && token != 'null') {
         request.user = jwt.verify(token, config.secret);
     } else {
@@ -24,7 +24,7 @@ let authMiddleware = function (request, response, next) {
         response.json(responseData);
         return ;
     }
-    console.log(request.user);
+    // console.log(request.user);
     next();
 };
 
