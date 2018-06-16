@@ -16,12 +16,12 @@ function TransactionList({ transactions }) {
 
     const transactionsList = (
         transactions.map(({ _id, customerName, amount,description,transactionType,createdAt }) => (
-            <Card key={ _id }>
-                  <CardTitle title={ customerName } subtitle={ moment(new Date(createdAt)).fromNow() } />
-                  <TextField value={amount}  />
-                  <TextField errorStyle={styles.errorStyle} value={description}  />
-                  <TextField  value={transactionType}  />
-            </Card>
+          <Card key={ _id }>
+                <CardTitle title={ customerName } subtitle={ moment(new Date(createdAt)).fromNow() } />
+                <TextField value={amount}  />
+                <TextField  value={description}  />
+                <TextField  value={transactionType}  />
+          </Card>
 
         ))
     );
@@ -36,6 +36,7 @@ function TransactionList({ transactions }) {
 TransactionList.propTypes = {
     transactions: PropTypes.array.isRequired
 };
+
 const styles = {
   errorStyle: {
     color: orange500,

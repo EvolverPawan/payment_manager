@@ -20,7 +20,7 @@ transactionRoutes.get('/transactions', authMiddleware, (request, response) => {
         data: {},
         errors: []
     };
-
+// console.log('request', request);
     Transaction.find({},[],{sort:{
         createdAt: -1 //Sort by Date Added DESC
     }}).exec(function(error, documents) {
