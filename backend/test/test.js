@@ -26,7 +26,7 @@ describe('Login API', function() {
            .end(done);
     });
 
-   it('should get user session for current user', function (done) {
+   it('should get success if session for current user is valid', function (done) {
    chai.request(app)
    .get('/transactions')
    .set('x-access-token',token)
